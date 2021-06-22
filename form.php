@@ -36,7 +36,7 @@
          } else {
       ?>
    
-      <form method = "post" action = "<?php $_PHP_SELF ?>">
+      <form method = "post" >
          <table width = "600" border = "0" cellspacing = "1" cellpadding = "2">
             <tr>
                <td width = "250">Tutorial Title</td>
