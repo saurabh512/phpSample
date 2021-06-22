@@ -7,7 +7,7 @@
    <body>
       <?php
          if(isset($_POST['add'])) {
-            $dbhost = 'remotemysql.com:3036';
+            $dbhost = 'remotemysql.com:3306';
             $dbuser = 'QgmkKQZft9';
             $dbpass = 'lnA3mZwJKW';
             $conn = mysqli_connect($dbhost, $dbuser, $dbpass);
@@ -20,11 +20,11 @@
                $tutorial_author = $_POST['tutorial_author'];
             
             $submission_date = $_POST['submission_date'];
-             mysqli_select_db('QgmkKQZft9');
+             
             $sql = "INSERT INTO tutorials_tbl ".
                "(tutorial_title,tutorial_author, submission_date) "."VALUES ".
                "('$tutorial_title','$tutorial_author','$submission_date')";
-              
+              mysqli_select_db('QgmkKQZft9');
             $retval = mysqli_query( $sql, $conn );
          
             if(! $retval ) {
@@ -33,7 +33,7 @@
             
             echo "Entered data successfully\n";
             mysqli_close($conn);
-         } 
+         } else {
       ?>
    
       <form method = "post" action = "<?php $_PHP_SELF ?>">
@@ -72,5 +72,8 @@
             </tr>
          </table>
       </form>
+      <?php
+      }
+   ?>
    </body>
 </html>
