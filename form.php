@@ -28,7 +28,7 @@
             $retval = mysqli_query( $sql, $conn );
          
             if(! $retval ) {
-               die('Could not enter data: ');
+               die('Could not enter data: '. mysqli_error());
             }
             
             echo "Entered data successfully\n";
