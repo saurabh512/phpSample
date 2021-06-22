@@ -7,7 +7,7 @@
    <body>
       <?php
          if(isset($_POST['add'])) {
-            $dbhost = 'remotemysql.com:3306';
+            $dbhost = 'remotemysql.com';
             $dbuser = 'QgmkKQZft9';
             $dbpass = 'lnA3mZwJKW';
             $conn = mysqli_connect($dbhost, $dbuser, $dbpass);
