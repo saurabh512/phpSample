@@ -8,35 +8,32 @@
       <?php
          if(isset($_POST['add'])) {
             $dbhost = 'remotemysql.com:3036';
-            $dbuser = 'QgmkKQZft9;
+            $dbuser = 'QgmkKQZft9';
             $dbpass = 'lnA3mZwJKW';
             $conn = mysqli_connect($dbhost, $dbuser, $dbpass);
          
             if(! $conn ) {
                die('Could not connect: ' . mysqli_error());
             }
-            if(! get_magic_quotes_gpc() ) {
-               $tutorial_title = addslashes ($_POST['tutorial_title']);
-               $tutorial_author = addslashes ($_POST['tutorial_author']);
-            } else {
+            
                $tutorial_title = $_POST['tutorial_title'];
                $tutorial_author = $_POST['tutorial_author'];
-            }
+            
             $submission_date = $_POST['submission_date'];
-   
+             mysqli_select_db('QgmkKQZft9');
             $sql = "INSERT INTO tutorials_tbl ".
                "(tutorial_title,tutorial_author, submission_date) "."VALUES ".
                "('$tutorial_title','$tutorial_author','$submission_date')";
-               mysqli_select_db('QgmkKQZft9');
+              
             $retval = mysqli_query( $sql, $conn );
          
             if(! $retval ) {
-               die('Could not enter data: ' . mysqli_error());
+               die('Could not enter data: ');
             }
-         
+            
             echo "Entered data successfully\n";
             mysqli_close($conn);
-         } else {
+         } 
       ?>
    
       <form method = "post" action = "<?php $_PHP_SELF ?>">
@@ -75,8 +72,5 @@
             </tr>
          </table>
       </form>
-   <?php
-      }
-   ?>
    </body>
 </html>
